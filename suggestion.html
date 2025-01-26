@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suggested Outfits</title>
+    <style>
+        #outfit-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        img {
+            width: 150px;
+            height: 150px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Suggested Outfit</h1>
+    <button onclick="getOutfitSuggestions('user1')">Get Outfit Suggestions</button>
+    <div id="outfit-container"></div>
+</body>
+</html>

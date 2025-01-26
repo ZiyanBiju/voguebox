@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Wardrobe</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        #wardrobe-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        img {
+            width: 150px;
+            height: 150px; /* Ensures uniform size */
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            object-fit: cover; /* Ensures images fit inside the box */
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Wardrobe</h1>
+    <div id="wardrobe-container">
+        {% if clothes %}
+            {% for item in clothes %}
+                <img src="{{ item }}" alt="Clothing Item">
+            {% endfor %}
+        {% else %}
+            <p>No items in your wardrobe yet!</p>
+        {% endif %}
+    </div>
+
+    <!-- Button to trigger AI outfit suggestion -->
+    <button onclick="getOutfitSuggestions('{{ user_id }}')">Get Outfit Suggestions</button>
+
+    <div id="suggested-outfit-container">
+        <h2>Suggested Outfit</h2>
+        <div id="suggested-outfit"></div>
+    </div>
+
+    <script>
+        function getOutfitSuggestions(userId) {
+            fetch(`/suggest_outfit/${userId}`)
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('suggested-outfit');
+                    container.innerHTML = ''; // Clear any previous content
+                    if (data.outfit.length === 0) {
+                        container.innerHTML = '<p>Not enough clothing items to suggest an outfit.</p>';
+                    } else {
+                        data.outfit.forEach(item => {
+                            const img = document.createElement('img');
+                            img.src = item;
+                            img.alt = 'Suggested outfit item';
+                            container.appendChild(img);
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching outfit suggestions:', error);
+                });
+        }
+    </script>
+
+</body>
+</html>
