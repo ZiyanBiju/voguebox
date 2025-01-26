@@ -42,6 +42,15 @@ VOGUEBOX is an AI-powered wardrobe styling app designed to simplify outfit plann
 - *Cloud Storage*: Secure wardrobe data and outfit plans.
 
 ---
+## Images 
+![image](https://github.com/user-attachments/assets/1ac4650a-be37-4f6e-9fd0-4aa4c5af2faa)
+
+![image](https://github.com/user-attachments/assets/42489999-077d-4461-abe6-9654cfe987c7)
+
+![image](https://github.com/user-attachments/assets/2aba1747-db3e-4dac-93a8-7cd4a247660d)
+
+
+
 
 ## Revenue Model
 
